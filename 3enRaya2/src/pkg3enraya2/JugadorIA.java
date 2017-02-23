@@ -37,7 +37,7 @@ public class JugadorIA extends Jugador {
         this.tablero = tablero;
     }
 
-    @Override
+  /*@Override
     public Posicion movimiento() { //IA pone ficha
         p = new Posicion();
 
@@ -54,7 +54,19 @@ public class JugadorIA extends Jugador {
             }
         }
         return null;
+    }*/
+    @Override
+    public Posicion movimiento() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if ("_".equals(tablero.consultar(new Posicion(i, j)))) {
+                    return new Posicion(i, j);
+                }
+            }
+        }
+        return null;
     }
+
     /* Movimiento random de la IA
         int fila, columna;
         fila=(int)(Math.random()*100)%3;
@@ -63,5 +75,4 @@ public class JugadorIA extends Jugador {
         System.out.println("Columna -->"+columna);
         return new Posicion(fila,columna);
         }*/
-
 }

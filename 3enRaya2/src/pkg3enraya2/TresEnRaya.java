@@ -16,9 +16,9 @@ public class TresEnRaya {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+
         Sesion s = new Sesion();
-        
+
     }
-    
+
 }

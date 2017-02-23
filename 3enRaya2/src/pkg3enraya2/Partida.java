@@ -22,7 +22,7 @@ public class Partida {
         this.jS[0] = jA;
         this.jS[1] = jIA;
 
-        this.turnoActual = 0;
+        this.turnoActual = (int) (Math.random()*2);
         this.m = m;
         jIA.setTablero(t);
     }
@@ -62,11 +62,18 @@ public class Partida {
                 if (comprobarGanador(this.jS[turnoActual % 2])) {
                     if (turnoActual % 2 == 0) {
                         m.ganarA();
+                        System.out.println("Has ganado");
                     } else {
                         m.ganarB();
+                        System.out.println("Has perdido");
                     }
 
                     partidaFinalizada = true;
+                    /*if con else dentro de validar turno.*/
+                } else if (t.completo()) {
+                    partidaFinalizada = true;
+                    System.out.println("EMPATE");
+                    m.empatar();
                 }
                 incrementarTurno();
             } else {
@@ -79,18 +86,15 @@ public class Partida {
 
                 partidaFinalizada = true;
             }
-            if (t.completo()) {
-                partidaFinalizada = true;
-                System.out.println("EMPATE");
-                m.empatar();
-            }
+
         }
+        System.out.println("Turno "+turnoActual+" Final de Partida");
         salir();
     }
 
     private void salir() { //para salir de la partida.
         t.mostrar();
-        m.imprimirMarcador();
+        m.imprimirMarcador(jS[0]);
     }
 
     public boolean comprobarGanador(Jugador jugadorJ) {
@@ -133,8 +137,6 @@ public class Partida {
 
 }
 
-
-
 /*
         Posicion p;
         int turnoActivo = 0;
@@ -158,4 +160,4 @@ public class Partida {
                     turnoActivo--;
                 }
             }
-*/
+ */
